@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+@using Salon.Models;
+
+<h1>Found Stylists</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No stylists have been found</h3>
+} 
+
+<ul>
+  @foreach(Stylist stylist in Model)
+  {
+    <li>@Html.ActionLink($"{stylist.Name}", "Name", new { id = stylist.StylistId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+
