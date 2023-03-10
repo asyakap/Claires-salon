@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+@using Salon.Models;
+@using System.Collections.Generic;
+@model List<Salon.Models.Client>;
+
+<br>
+<h4>Search Results</h4>
+@if (Model.Count == 0)
+{
+  <p> No clients match this search </p>
+}
+else
+{
+  <ul>
+    @foreach (Client client in Model)
+    {
+      <li>@Html.ActionLink($"{client.Name}", "Details", new { id = client.ClientId })</li>
+    }
+  </ul>
+}
+@Html.ActionLink("Go back to all clients", "Index")</button>

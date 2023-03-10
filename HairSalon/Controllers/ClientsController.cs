@@ -79,5 +79,12 @@ namespace Salon.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost, ActionName("Search")]
+    public ActionResult Search(string search)
+    {
+      List<Client> model = _db.Clients.Where(client => client.Name == search).ToList();
+      return View(model);
+    }
   }
 }
