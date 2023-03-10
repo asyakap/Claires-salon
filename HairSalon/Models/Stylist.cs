@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Salon.Models
 {
@@ -8,5 +7,6 @@ namespace Salon.Models
     public int StylistId { get; set; }
     public string Name { get; set; }
     public List<Client> Clients { get; set; }
+    public List<Appointment> Appointments { get; set; }
   }
 }
