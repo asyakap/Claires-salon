@@ -1,9 +1,17 @@
 @{
   Layout = "_Layout";
 }
+@model Salon.Models.Stylist
+
 <h3>Home</h3>
 @Html.ActionLink("View Stylists", "Index", "Stylists")
 <br>
 @Html.ActionLink("View Clients", "Index", "Clients")
 <br>
-@Html.ActionLink("Search by Stylist's Name", "Index", "Search")
+<br>
+@using (Html.BeginForm("Search", "Stylists"))
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <input type="submit" value="Search Stylist"/>
+}
