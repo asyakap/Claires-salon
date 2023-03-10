@@ -1,73 +1,81 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using Salon.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Salon.Controllers
 {
-  public class StylistsController : Controller
+  public class ClientsController : Controller
   {
     private readonly SalonContext _db;
 
-    public StylistsController(SalonContext db)
+    public ClientsController(SalonContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
-      List<Slylist> model = _db.Stylists.ToList();
+      List<Client> model = _db.Clients
+                            .Include(client => client.Stylist)
+                            .ToList();
       return View(model);
     }
 
     public ActionResult Create()
     {
+      ViewBag.CollectionId = new SelectList(_db.Stylists, "SylistId", "Name");
       return View();
     }
-    
+
     [HttpPost]
-    public ActionResult Create(Stylist stylist)
+    public ActionResult Create(Client client)
     {
-      _db.Collections.Add(stylist);
+      if(client.StylistId == 0)
+      {
+        return RedirectToAction("Create");
+      }
+      _db.Clients.Add(client);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Edit(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-      return View(thisStylist);
+      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id); 
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+      return View(thisClient);
     }
 
     [HttpPost]
-    public ActionResult Edit(Stylist stylist)
+    public ActionResult Edit (Client client)
     {
-      // _db.Entry(stylist).State = EntityState.Modified;
-      _db.Stylists.Update(stylist);
+      _db.Clients.Update(client);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Stylist thisStylist = _db.Stylists
-                                  .Include(stylist => stylist.Clients)
-                                  .FirstOrDefault(stylist => stylist.StylistId == id);
-      return View(thisStylist);
+      Client thisClient = _db.Clients
+                          .Include(client => client.Stylist)
+                          .FirstOrDefault(client => client.ClientId == id);
+      return View(thisClient);
     }
 
     public ActionResult Delete(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-      return View(thisStylist);
+      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      return View(thisClient);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-      _db.Collections.Remove(thisStylist);
+      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      _db.Clients.Remove(thisClient);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
