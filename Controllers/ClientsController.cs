@@ -26,7 +26,7 @@ namespace Salon.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.CollectionId = new SelectList(_db.Stylists, "SylistId", "Name");
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
       return View();
     }
 
