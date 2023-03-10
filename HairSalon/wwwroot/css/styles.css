@@ -1,7 +1,7 @@
 body {
   padding-left: 15%;
   padding-top: 23%;
-  background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("./../img/background.jpg");
+  background: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1)), url("./../img/background.jpg");
   position: center;
   background-repeat: no-repeat;
   background-size: cover;
