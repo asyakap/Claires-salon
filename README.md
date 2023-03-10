@@ -57,7 +57,8 @@ No known bugs. Tests are not configured for the current format of this project.
 ## License
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!
 
-MIT License Copyright (c) 2023 Sarah Andyshak, Owen Brown, Asia Kaplanyan, Brishna Bakshev, Jackson Levine. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+MIT License Copyright (c) 2023 Asia Kaplanyan
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
