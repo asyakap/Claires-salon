@@ -52,7 +52,7 @@ A website for a hair salon owner using MySQL and EF Core. User can add and manag
 
 ## Known Bugs
 
-No known bugs. Tests are not configured for the current format of this project.
+* Added appointments are not display in Stylist/Details page*
 
 ## License
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!
