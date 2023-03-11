@@ -23,20 +23,16 @@ else
     }
   </ul>
 }
-@if (@Model.Appointments.Count == 0)
+@if (@Model.Appointments.Count > 0)
 {
-  <h3>There are no appointments scheduled</h3>
-} 
-else 
-{
-  <h4>UPCOMING APPOINTMENTS</h4>
-    @foreach (Appointment appointment in @Model.Appointments)
+<h3>Upcoming Appointments</h3>
+    @foreach (Appointment appointment in Model.Appointments)
     {
-      <div class="appointment">
+      <li>
         <p>DATE: @appointment.Date</p>
         <p>TIME: @appointment.Time</p>
         <p>NOTES: @appointment.Notes</p>
-      </div>
+      </li>
     }
 }
 
