@@ -2,8 +2,8 @@
   Layout = "_Layout";
 }
 
-@model Salon.Models.Stylist
 @using Salon.Models
+@model Salon.Models.Stylist
 
 <h2>Stylist Details</h2>
 <hr />
@@ -23,8 +23,26 @@ else
     }
   </ul>
 }
+@if (@Model.Appointments.Count == 0)
+{
+  <h3>There are no appointments scheduled</h3>
+} 
+else 
+{
+  <h4>UPCOMING APPOINTMENTS</h4>
+    @foreach (Appointment appointment in @Model.Appointments)
+    {
+      <div class="appointment">
+        <p>DATE: @appointment.Date</p>
+        <p>TIME: @appointment.Time</p>
+        <p>NOTES: @appointment.Notes</p>
+      </div>
+    }
+}
+
 
 <p>@Html.ActionLink("Add new client", "Create", "Clients")</p>
+<p>@Html.ActionLink("SCHEDULE APPOINTMENT", "Create", "Appointments")</p>
 <p>@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId })</p>
 <p>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId })</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>
